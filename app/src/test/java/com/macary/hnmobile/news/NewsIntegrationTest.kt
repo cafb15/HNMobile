@@ -16,10 +16,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.dsl.module
-import org.mockito.junit.MockitoJUnitRunner
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.get
 import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 
 /**
  * Created by Carlos Farfan on 7/01/2021.

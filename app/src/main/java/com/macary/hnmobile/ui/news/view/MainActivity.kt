@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.macary.hnmobile.databinding.ActivityMainBinding
 import com.macary.hnmobile.ui.news.NewsViewModel
-import org.koin.androidx.scope.ScopeActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.macary.hnmobile.ui.news.NewsViewModel.UiModel
 import com.macary.hnmobile.ui.news.view.adapter.ISwipeListener
 import com.macary.hnmobile.ui.news.view.adapter.NewsRecyclerAdapter
 import com.macary.hnmobile.ui.news.view.adapter.SwipeNewsHelper
 import com.macary.hnmobile.ui.newsDetail.view.NewsDetailActivity
-import com.macary.hnmobile.utils.networkMonitor.ConnectionStateMonitor
 import com.macary.hnmobile.utils.Constants
 import com.macary.hnmobile.utils.Utils
 import com.macary.hnmobile.utils.adapters.AbstractAdapter
 import com.macary.hnmobile.utils.extensions.startActivity
 import com.macary.hnmobile.utils.extensions.toastLong
+import com.macary.hnmobile.utils.networkMonitor.ConnectionStateMonitor
+import org.koin.androidx.scope.ScopeActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ScopeActivity(), ISwipeListener {
 

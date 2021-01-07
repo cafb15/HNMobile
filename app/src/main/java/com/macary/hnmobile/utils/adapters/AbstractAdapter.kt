@@ -11,8 +11,8 @@ import com.macary.hnmobile.utils.extensions.onClick
 /**
  * Created by Carlos Farfan on 4/01/2021.
  */
-abstract class AbstractAdapter<ITEM>(protected val items: List<ITEM>, private val layoutResId: Int)
-    : RecyclerView.Adapter<AbstractAdapter.Holder>() {
+abstract class AbstractAdapter<ITEM>(protected val items: List<ITEM>, private val layoutResId: Int) :
+    RecyclerView.Adapter<AbstractAdapter.Holder>() {
 
     override fun getItemCount(): Int = items.size
 

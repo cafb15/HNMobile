@@ -1,10 +1,9 @@
 package com.macary.hnmobile.ui.newsDetail.view
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.macary.domain.News
-import com.macary.hnmobile.R
 import com.macary.hnmobile.databinding.ActivityNewsDetailBinding
 import com.macary.hnmobile.ui.newsDetail.NewsWebClient
 import com.macary.hnmobile.utils.Constants

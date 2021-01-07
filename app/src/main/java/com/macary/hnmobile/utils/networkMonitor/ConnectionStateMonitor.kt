@@ -13,8 +13,8 @@ class ConnectionStateMonitor(private val context: Context) : ConnectivityManager
 
     private lateinit var connectivityManager: ConnectivityManager
     private var networkRequest: NetworkRequest = NetworkRequest.Builder()
-            .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-            .build()
+        .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+        .build()
 
     private lateinit var listener: (Boolean) -> Unit
 

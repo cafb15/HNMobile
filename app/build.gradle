@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'org.jlleitschuh.gradle.ktlint' version '9.4.1'
 }
 
 android {
@@ -35,6 +36,29 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+}
+
+ktlint {
+    debug = true
+    verbose = true
+    android = false
+    outputToConsole = true
+    outputColorName = "RED"
+    ignoreFailures = true
+    enableExperimentalRules = true
+    additionalEditorconfigFile = file("/some/additional/.editorconfig")
+    disabledRules = ["final-newline"]
+    reporters {
+        reporter "html"
+        reporter "checkstyle"
+    }
+    kotlinScriptAdditionalPaths {
+        include fileTree("scripts/")
+    }
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
     }
 }
 

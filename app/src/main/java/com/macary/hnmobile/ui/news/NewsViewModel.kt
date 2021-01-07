@@ -15,11 +15,13 @@ import kotlinx.coroutines.launch
 /**
  * Created by Carlos Farfan on 4/01/2021.
  */
-class NewsViewModel(private val newsCase: GetNewsUseCase,
-                    private val updateNewsCase: UpdateNewsUseCase,
-                    private val deleteNewsCase: DeleteNewsUseCase,
-                    uiDispatcher: CoroutineDispatcher)
-    : ScopedViewModel(uiDispatcher) {
+class NewsViewModel(
+    private val newsCase: GetNewsUseCase,
+    private val updateNewsCase: UpdateNewsUseCase,
+    private val deleteNewsCase: DeleteNewsUseCase,
+    uiDispatcher: CoroutineDispatcher
+) :
+    ScopedViewModel(uiDispatcher) {
 
     private val _model = MutableLiveData<UiModel>()
     val model: LiveData<UiModel> get() = _model

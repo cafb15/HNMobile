@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.DiffUtil
 /**
  * Created by Carlos Farfan on 4/01/2021.
  */
-class DiffUtilCallback<ITEM>(private val oldItems: List<ITEM>, private val newItems: List<ITEM>)
-    : DiffUtil.Callback() {
+class DiffUtilCallback<ITEM>(private val oldItems: List<ITEM>, private val newItems: List<ITEM>) :
+    DiffUtil.Callback() {
 
     override fun getOldListSize(): Int = oldItems.size
 

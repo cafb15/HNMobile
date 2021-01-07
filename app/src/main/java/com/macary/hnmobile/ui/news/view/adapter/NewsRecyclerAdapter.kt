@@ -8,8 +8,8 @@ import com.macary.hnmobile.utils.adapters.AbstractAdapter
 /**
  * Created by Carlos Farfan on 4/01/2021.
  */
-class NewsRecyclerAdapter(news: List<News>, private val f: (News) -> Unit)
-    : AbstractAdapter<News>(news, R.layout.item_news) {
+class NewsRecyclerAdapter(news: List<News>, private val f: (News) -> Unit) :
+    AbstractAdapter<News>(news, R.layout.item_news) {
 
     override fun onItemClick(itemView: View, position: Int) {
         f(items[position])

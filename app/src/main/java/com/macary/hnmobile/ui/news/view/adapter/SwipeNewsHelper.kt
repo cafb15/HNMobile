@@ -8,11 +8,14 @@ import com.macary.hnmobile.utils.adapters.AbstractAdapter
 /**
  * Created by Carlos Farfan on 5/01/2021.
  */
-class SwipeNewsHelper(private val listener: ISwipeListener)
-    : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+class SwipeNewsHelper(private val listener: ISwipeListener) :
+    ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
-    override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
-                        target: RecyclerView.ViewHolder): Boolean {
+    override fun onMove(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder
+    ): Boolean {
         return true
     }
 
@@ -23,12 +26,25 @@ class SwipeNewsHelper(private val listener: ISwipeListener)
         }
     }
 
-    override fun onChildDrawOver(c: Canvas, recyclerView: RecyclerView,
-                                 viewHolder: RecyclerView.ViewHolder?, dX: Float, dY: Float,
-                                 actionState: Int, isCurrentlyActive: Boolean) {
+    override fun onChildDrawOver(
+        c: Canvas,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder?,
+        dX: Float,
+        dY: Float,
+        actionState: Int,
+        isCurrentlyActive: Boolean
+    ) {
         val foregroundView = (viewHolder as AbstractAdapter.Holder).binding.llNews
-        getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY, actionState,
-                isCurrentlyActive)
+        getDefaultUIUtil().onDrawOver(
+            c,
+            recyclerView,
+            foregroundView,
+            dX,
+            dY,
+            actionState,
+            isCurrentlyActive
+        )
     }
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
@@ -36,12 +52,25 @@ class SwipeNewsHelper(private val listener: ISwipeListener)
         getDefaultUIUtil().clearView(foregroundView)
     }
 
-    override fun onChildDraw(c: Canvas, recyclerView: RecyclerView,
-                             viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float,
-                             actionState: Int, isCurrentlyActive: Boolean) {
+    override fun onChildDraw(
+        c: Canvas,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        dX: Float,
+        dY: Float,
+        actionState: Int,
+        isCurrentlyActive: Boolean
+    ) {
         val foregroundView = (viewHolder as AbstractAdapter.Holder).binding.llNews
-        getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY, actionState,
-                isCurrentlyActive)
+        getDefaultUIUtil().onDraw(
+            c,
+            recyclerView,
+            foregroundView,
+            dX,
+            dY,
+            actionState,
+            isCurrentlyActive
+        )
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
