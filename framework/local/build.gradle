@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def keysFile = rootProject.file("keys.properties")
+def roomFile = rootProject.file("room.properties")
+def preferencesFile = rootProject.file("preferences.properties")
+
+def keysProperties = new Properties()
+def roomProperties = new Properties()
+def preferencesProperties = new Properties()
+
+keysProperties.load(new FileInputStream(keysFile))
+roomProperties.load(new FileInputStream(roomFile))
+preferencesProperties.load(new FileInputStream(preferencesFile))
+
+android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'DB_NAME', '"' + roomProperties['dbName'] + '"'
+
+    type.buildConfigField 'String', 'KEY_DB', '"' + keysProperties['keyStoredDB'] + '"'
+    type.buildConfigField 'String', 'KEY_ALIAS', '"' + keysProperties['keyAlias'] + '"'
+    type.buildConfigField 'String', 'ALGORITHM', '"' + keysProperties['KeyAlgorithm'] + '"'
+    type.buildConfigField 'String', 'ALGORITHM_TYPE', '"' + keysProperties['KeyAlgorithmType'] + '"'
+    type.buildConfigField 'String', 'CIPHER', '"' + keysProperties['KeyCipher'] + '"'
+    type.buildConfigField 'int', 'BYTE_SIZE', keysProperties['byteSize']
+    type.buildConfigField 'int', 'SALT_SIZE', keysProperties['saltSize']
+    type.buildConfigField 'String', 'HEX_CHARS', '"' + keysProperties['hexChars'] + '"'
+
+    type.buildConfigField 'String', 'PREFERENCES_NAME', '"' + preferencesProperties['preferencesName'] + '"'
+    type.buildConfigField 'String', 'PREFERENCES_KEY', '"' + preferencesProperties['preferencesKey'] + '"'
+    type.buildConfigField 'String', 'PREFERENCES_KEY_CREATED', '"' + preferencesProperties['preferencesKeyCreated'] + '"'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation androidLibs['security']
+    implementation androidLibs['coreKtx']
+    implementation androidLibs['room']
+    implementation androidLibs['roomKtx']
+
+    implementation koinLibs['koin']
+    implementation kotlinLibs.values()
+    implementation coroutinesLibs.values()
+
+    kapt kaptLibs['roomCompiler']
+
+    implementation libs['sqlcipher']
+    implementation libs['sqlite']
+    implementation libs['gson']
+}

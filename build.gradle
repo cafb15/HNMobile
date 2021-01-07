@@ -1,0 +1,95 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.4.21"
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    ext {
+        androidLibs = [
+                constraint : 'androidx.constraintlayout:constraintlayout:2.0.4',
+                appcompat : 'androidx.appcompat:appcompat:1.2.0',
+                legacy : 'androidx.legacy:legacy-support-v4:1.0.0',
+                material : 'com.google.android.material:material:1.2.1',
+                recyclerView : 'androidx.recyclerview:recyclerview:1.1.0',
+                lifecycleViewModel  : 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0',
+                lifecycle : 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0',
+                constraintLayout : 'androidx.constraintlayout:constraintlayout:2.0.4',
+                security : 'androidx.security:security-crypto:1.1.0-alpha02',
+                espressoIdling : 'androidx.test.espresso:espresso-idling-resource:3.3.0',
+                coreKtx : 'androidx.core:core-ktx:1.3.2',
+                room : 'androidx.room:room-runtime:2.2.5',
+                roomKtx : 'androidx.room:room-ktx:2.2.5'
+        ]
+
+        kotlinLibs = [
+                stdlib : 'org.jetbrains.kotlin:kotlin-stdlib:1.4.21'
+        ]
+
+        koinLibs = [
+                koin : 'org.koin:koin-android:2.2.1',
+                koinCore : 'org.koin:koin-core:2.2.1',
+                koinScope : 'org.koin:koin-androidx-scope:2.2.1',
+                koinViewModel : "org.koin:koin-androidx-viewmodel:2.2.1"
+        ]
+
+        libs = [
+                sqlcipher : 'net.zetetic:android-database-sqlcipher:4.4.0@aar',
+                sqlite: 'androidx.sqlite:sqlite:2.1.0',
+                gson : 'com.google.code.gson:gson:2.8.6',
+                moshi : 'com.squareup.moshi:moshi:1.11.0'
+        ]
+
+        retrofitLibs = [
+                retrofit : 'com.squareup.retrofit2:retrofit:2.9.0',
+                retrofitMoshi : 'com.squareup.retrofit2:converter-moshi:2.9.0',
+                interceptor : 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+        ]
+
+        coroutinesLibs = [
+                coroutines : 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1',
+                coroutinesAndroid : 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1',
+        ]
+
+        kaptLibs = [
+                roomCompiler : 'androidx.room:room-compiler:2.2.5',
+                moshiCodegen : 'com.squareup.moshi:moshi-kotlin-codegen:1.11.0',
+                lifecycleCompiler : 'androidx.lifecycle:lifecycle-compiler:2.2.0'
+        ]
+
+        testLibs = [
+                junitTest : 'junit:junit:4.13.1',
+                koinTest : 'org.koin:koin-test:2.2.1',
+                coreTesting : 'androidx.test:core:1.0.0',
+                coroutinesTest : 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2',
+                mockitoKotlin : 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0',
+                mockitoInline : 'org.mockito:mockito-inline:3.4.0',
+                archCoreTesting : 'androidx.arch.core:core-testing:2.1.0'
+        ]
+
+        androidTestLibs = [
+                testRunner : 'androidx.test:runner:1.1.0',
+                testRules : 'androidx.test:rules:1.3.0',
+                junitAndroidTest : 'androidx.test.ext:junit:1.1.2'
+        ]
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

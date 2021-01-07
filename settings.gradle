@@ -1,0 +1,8 @@
+include ':testShared'
+include ':framework:local'
+include ':domain'
+include ':framework:server'
+include ':data'
+include ':usecases'
+include ':app'
+rootProject.name = "HNMobile"

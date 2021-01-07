@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.macary.hnmobile"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':usecases')
+    implementation project(':testShared')
+    implementation project(':framework:local')
+    implementation project(':framework:server')
+
+    implementation androidLibs.values()
+    implementation kotlinLibs.values()
+    implementation koinLibs.values()
+    implementation libs['gson']
+
+    kapt kaptLibs.values()
+
+    testImplementation testLibs.values()
+    androidTestImplementation androidTestLibs.values()
+}
